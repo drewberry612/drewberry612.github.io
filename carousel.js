@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     const carousel = document.querySelector("#skills .carousel");
+    if (!carousel) return; // Exit if the carousel element is not found
   
     // Pause on mouse hover
     carousel.addEventListener("mouseenter", () => {
