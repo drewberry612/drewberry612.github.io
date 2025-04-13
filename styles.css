@@ -259,8 +259,9 @@ h2::after {
 #skills .carousel > div {
     flex: 0 0 auto;
     flex-shrink: 0;
-    min-width: 280px;
-    width: 25%; /* Works for wider screens */
+    min-width: 200px; /* Adjusted minimum width */
+    max-width: 240px; /* Added maximum width */
+    width: auto; /* Allow the width to adjust dynamically */
     padding: 1.5rem;
     background: #1e293b;
     border-radius: 12px;
