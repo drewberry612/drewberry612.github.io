@@ -1,47 +1,450 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Drew Berry | Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      margin: 0;
-      padding: 2rem;
-      background: #f9f9f9;
-      color: #333;
-      max-width: 700px;
-      margin: auto;
-    }
-    h1 { color: #2c3e50; }
-    a { color: #007acc; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    section { margin-bottom: 2rem; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drew Berry - AI Portfolio</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1a202c;
+            color: #e2e8f0;
+            text-align: center;
+        }
+        section {
+            padding: 3rem 1.5rem;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        #intro {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            background: linear-gradient(to bottom right, #2d3748, #4a5568);
+            border-bottom: 1px solid #4a5568;
+            padding: 4rem 1.5rem;
+        }
+        #intro img {
+            width: 140px;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid #68d391;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        #intro h1 {
+            font-size: 2.5rem;
+            margin: 0;
+            color: #e2e8f0;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        #intro h2 {
+            font-size: 1.4rem;
+            color: #a0aec0;
+            margin: 0.5rem 0;
+            font-weight: 500;
+        }
+        #intro p {
+            margin: 0.5rem 0 1.5rem;
+            color: #cbd5e0;
+            max-width: 500px;
+        }
+        #intro a {
+            margin-right: 1.5rem;
+            text-decoration: none;
+            transition: transform 0.2s;
+        }
+        #intro a:hover {
+            transform: scale(1.1);
+        }
+        #intro img.icon {
+            width: 32px;
+            height: 32px;
+            vertical-align: middle;
+        }
+        #intro a.cv-link {
+            color: #68d391;
+            font-size: 1.2rem;
+            text-decoration: underline;
+        }
+        #intro a.cv-link:hover {
+            color: #48bb78;
+        }
+        #about {
+            background-color: #2d3748;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            padding: 2.5rem;
+            margin: 2rem auto;
+            max-width: 1000px;
+        }
+        #about h2 {
+            color: #e2e8f0;
+            margin-top: 0;
+            font-size: 2rem;
+        }
+        #about > div {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        #about > div > div {
+            flex: 1;
+           :min-width: 200px;
+        }
+        #about ul {
+            list-style: none;
+            padding: 0;
+            color: #cbd5e0;
+        }
+        #about ul li:before {
+            content: '•';
+            color: #68d391;
+            margin-right: 0.5rem;
+        }
+        #current {
+            background-color: #4a5568;
+            padding: 2.5rem;
+            border-radius: 12px;
+            margin: 2rem auto;
+            max-width: 1000px;
+        }
+        #current h2 {
+            color: #e2e8f0;
+            font-size: 2rem;
+        }
+        #current > div {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        #current div div {
+            background: #2d3748;
+            border: 1px solid #718096;
+            padding: 1.5rem;
+            border-radius: 8px;
+            transition: box-shadow 0.2s, transform 0.2s;
+        }
+        #current div div:hover {
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+            transform: translateY(-4px);
+        }
+        #current h3 {
+            margin: 0.5rem 0;
+            color: #e2e8f0;
+            font-size: 1.2rem;
+        }
+        #current p {
+            color: #cbd5e0;
+            margin: 0.5rem 0;
+        }
+        #current a {
+            text-decoration: none;
+            color: #68d391;
+            margin-right: 0.75rem;
+            font-size: 0.9rem;
+        }
+        #current a:hover {
+            color: #48bb78;
+        }
+        #skills {
+            background-color: #2d3748;
+            padding: 2.5rem;
+            border-radius: 12px;
+            margin: 2rem auto;
+            max-width: 1000px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+        #skills h2 {
+            color: #e2e8f0;
+            font-size: 2rem;
+        }
+        #skills > div {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.5rem;
+        }
+        #skills div {
+            padding: 1.5rem;
+            background: #4a5568;
+            border-radius: 8px;
+            border: 1px solid #718096;
+            transition: transform 0.2s;
+        }
+        #skills div:hover {
+            transform: translateY(-4px);
+        }
+        #skills div h3 {
+            margin: 0 0 0.5rem;
+            color: #68d391;
+            font-size: 1.1rem;
+        }
+        #skills p {
+            margin: 0.4rem 0;
+            color: #cbd5e0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        #skills img {
+            width: 24px;
+            height: 24px;
+            vertical-align: middle;
+        }
+        #projects {
+            background-color: #4a5568;
+            padding: 2.5rem;
+            border-radius: 12px;
+            margin: 2rem auto;
+            max-width: 1000px;
+        }
+        #projects h2 {
+            color: #e2e8f0;
+            font-size: 2rem;
+        }
+        #projects > div {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        #projects div div {
+            background: #2d3748;
+            border: 1px solid #718096;
+            padding: 1.5rem;
+            border-radius: 8px;
+            transition: box-shadow 0.2s, transform 0.2s;
+        }
+        #projects div div:hover {
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+            transform: translateY(-4px);
+        }
+        #projects img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 1px solid #718096;
+        }
+        #projects h3 {
+            margin: 0.5rem 0;
+            color: #e2e8f0;
+            font-size: 1.2rem;
+        }
+        #projects p {
+            color: #cbd5e0;
+            margin: 0.5rem 0;
+        }
+        #projects a {
+            text-decoration: none;
+            color: #68d391;
+            margin-right: 0.75rem;
+            font-size: 0.9rem;
+        }
+        #projects a:hover {
+            color: #48bb78;
+        }
+        #education {
+            background-color: #2d3748;
+            padding: 2.5rem;
+            border-radius: 12px;
+            margin: 2rem auto;
+            max-width: 1000px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+        #education h2 {
+            color: #e2e8f0;
+            font-size: 2rem;
+        }
+        #education > div {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+        }
+        #education div div {
+            flex: 1;
+            min-width: 280px;
+            background: #4a5568;
+            border: 1px solid #718096;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        }
+        #education p {
+            margin: 0 0 0.5rem;
+            color: #e2e8f0;
+            font-weight: 500;
+        }
+        #education ul {
+            list-style: none;
+            padding: 0;
+            color: #cbd5e0;
+        }
+        #education ul li:before {
+            content: '•';
+            color: #68d391;
+            margin-right: 0.5rem;
+        }
+    </style>
 </head>
 <body>
-  <h1>Drew Berry</h1>
-  <p>Machine Learning Engineer | Data Scientist | AI Enthusiast</p>
+    <!-- Intro / Hero Section -->
+    <section id="intro">
+        <div>
+            <img src="placeholder-photo.jpg" alt="Drew Berry">
+        </div>
+        <div>
+            <h1>Drew Berry</h1>
+            <h2>AI/ML Engineer with a passion for intelligent systems</h2>
+            <p>An AI enthusiast specializing in reinforcement learning and creative problem-solving, actively seeking opportunities in the AI industry.</p>
+            <div>
+                <a href="https://github.com/drewberry612" title="GitHub"><img src="https://github.com/favicon.ico" alt="GitHub" class="icon"></a>
+                <a href="https://linkedin.com/in/drew-berry" title="LinkedIn"><img src="https://www.linkedin.com/favicon.ico" alt="LinkedIn" class="icon"></a>
+                <a href="mailto:drewberry137@outlook.com" title="Email"><img src="https://www.google.com/favicon.ico" alt="Gmail" class="icon"></a>
+                <a href="cv.pdf" class="cv-link">CV</a>
+            </div>
+        </div>
+    </section>
 
-  <section>
-    <h2>About Me</h2>
-    <p>I’m an MSc Artificial Intelligence graduate with experience in ML, reinforcement learning, and generative AI. I like solving weird problems with code.</p>
-  </section>
+    <!-- About Me -->
+    <section id="about">
+        <h2>About Me</h2>
+        <div>
+            <div>
+                <p>I'm Drew, a passionate AI/ML engineer with first-class academic credentials from the University of Essex. My focus is on building intelligent systems, from game engines to reinforcement learning models, and I thrive on tackling complex challenges with creative solutions.</p>
+            </div>
+            <div>
+                <ul>
+                    <li>Bouldering 2-3 times a week</li>
+                    <li>Expert debugging without tools</li>
+                    <li>GenAI and memory systems enthusiast</li>
+                    <li>Losing track of time while coding</li>
+                </ul>
+            </div>
+        </div>
+    </section>
 
-  <section>
-    <h2>Projects</h2>
-    <ul>
-      <li><a href="https://github.com/yourusername/project-1">🧠 Generative AI Music Recommender</a></li>
-      <li><a href="https://github.com/yourusername/project-2">🪨 Bouldering Problem Solver</a></li>
-    </ul>
-  </section>
+    <!-- Currently Working On -->
+    <section id="current">
+        <h2>Currently Working On</h2>
+        <div>
+            <div>
+                <h3>AI-Assisted Music Recommendation</h3>
+                <p>A personal project using GenAI, Streamlit, and Spotify's Web API to explore AI-driven music recommendations.</p>
+                <p>Tech: Python, Streamlit, Spotify API</p>
+            </div>
+            <div>
+                <h3>Kaggle Competitions</h3>
+                <p>Tackling real-world ML challenges on Kaggle, applying advanced techniques to diverse datasets.</p>
+                <p>Tech: Python, scikit-learn, TensorFlow, Pandas</p>
+                <a href="https://kaggle.com">Kaggle</a>
+            </div>
+        </div>
+    </section>
 
-  <section>
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:drewberry137@outlook.com">drewberry137@outlook.com</a><br>
-    GitHub: <a href="https://github.com/drewberry612">github.com/drewberry612</a></p>
-  </section>
+    <!-- Skills -->
+    <section id="skills">
+        <h2>Skills</h2>
+        <div>
+            <div>
+                <h3>Languages</h3>
+                <p><img src="https://www.python.org/static/favicon.ico" alt="Python"> Python</p>
+                <p><img src="https://www.java.com/favicon.ico" alt="Java"> Java</p>
+                <p><img src="https://sqlbolt.com/favicon.ico" alt="SQL"> SQL</p>
+            </div>
+            <div>
+                <h3>ML/AI Frameworks</h3>
+                <p><img src="https://www.tensorflow.org/favicon.ico" alt="TensorFlow"> TensorFlow</p>
+                <p><img src="https://keras.io/favicon.ico" alt="Keras"> Keras</p>
+                <p><img src="https://pytorch.org/favicon.ico" alt="PyTorch"> PyTorch</p>
+                <p><img src="https://scikit-learn.org/favicon.ico" alt="scikit-learn"> scikit-learn</p>
+                <p><img src="https://huggingface.co/favicon.ico" alt="Hugging Face"> Hugging Face</p>
+                <p><img src="https://www.langchain.com/favicon.ico" alt="LangChain"> LangChain</p>
+            </div>
+            <div>
+                <h3>Tools & Platforms</h3>
+                <p><img src="https://git-scm.com/favicon.ico" alt="Git"> Git</p>
+                <p><img src="https://github.com/favicon.ico" alt="GitHub"> GitHub</p>
+                <p><img src="https://www.oracle.com/favicon.ico" alt="OCI"> OCI</p>
+                <p><img src="https://jupyter.org/favicon.ico" alt="Jupyter"> Jupyter Notebook</p>
+                <p><img src="https://colab.research.google.com/favicon.ico" alt="Google Colab"> Google Colab</p>
+                <p><img src="https://www.jetbrains.com/favicon.ico" alt="JetBrains"> JetBrains suite</p>
+                <p><img src="https://www.atlassian.com/favicon.ico" alt="Jira"> Jira</p>
+            </div>
+            <div>
+                <h3>Technical Skills</h3>
+                <p>Neural Network Design</p>
+                <p>Reinforcement Learning</p>
+                <p>Genetic Algorithms</p>
+                <p>Predictive Analytics</p>
+                <p>RAG</p>
+                <p>LLMs</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+        <h2>Projects</h2>
+        <div>
+            <div>
+                <img src="project1-placeholder.jpg" alt="MSc Thesis">
+                <h3>MSc Thesis: Reinforcement Learning in TORCS</h3>
+                <p>Built AI driving models for TORCS using genetic algorithms and PPO, tuning hyperparameters for complex behaviors.</p>
+                <p>Tech: Python, OpenAI Gym, StableBaselines3</p>
+                <a href="https://github.com/drewberry612">GitHub</a>
+                <a href="#">More Details</a>
+            </div>
+            <div>
+                <img src="project2-placeholder.jpg" alt="Street Fighter Clone">
+                <h3>Street Fighter Engine</h3>
+                <p>Developed a Java-based game engine from scratch, later used for RL research by another MSc student.</p>
+                <p>Tech: Java</p>
+                <a href="https://github.com/drewberry612">GitHub</a>
+                <a href="#">More Details</a>
+            </div>
+            <div>
+                <img src="project3-placeholder.jpg" alt="Angry Birds Clone">
+                <h3>Angry Birds Clone</h3>
+                <p>Created a physics-based clone of Angry Birds with custom mechanics and gameplay.</p>
+                <p>Tech: Python, Pygame</p>
+                <a href="https://github.com/drewberry612">GitHub</a>
+                <a href="#">More Details</a>
+            </div>
+            <div>
+                <img src="project4-placeholder.jpg" alt="Autograd with NumPy">
+                <h3>Autograd with NumPy</h3>
+                <p>Implemented autograd functionality for neural networks using only NumPy.</p>
+                <p>Tech: Python, NumPy</p>
+                <a href="https://github.com/drewberry612">GitHub</a>
+                <a href="#">More Details</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education">
+        <h2>Education</h2>
+        <div>
+            <div>
+                <p>MSc Artificial Intelligence, University of Essex, Oct 2023 - Oct 2024</p>
+                <ul>
+                    <li>Distinction (84%)</li>
+                    <li>Relevant Modules: Machine Learning, Neural Networks, Text Analytics</li>
+                </ul>
+            </div>
+            <div>
+                <p>BSc Computer Science, University of Essex, Oct 2020 - Jul 2023</p>
+                <ul>
+                    <li>Honours Class I (76%)</li>
+                    <li>Dean’s List for Excellence (Years 1 and 2)</li>
+                </ul>
+            </div>
+        </div>
+    </section>
 </body>
 </html>
