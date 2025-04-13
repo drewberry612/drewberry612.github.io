@@ -255,17 +255,19 @@ h2::after {
     width: max-content; /* Allow the container to grow based on content */
 }
 
+@keyframes carousel {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); } /* Adjust to match half the content width */
+}
+
 #skills .carousel > div {
     flex: 0 0 auto;
-    flex-shrink: 0;
-    min-width: 200px; /* Adjusted minimum width */
-    max-width: 240px; /* Added maximum width */
-    width: auto; /* Allow the width to adjust dynamically */
+    min-width: 200px;
+    max-width: 240px;
     padding: 1.5rem;
     background: #1e293b;
     border-radius: 12px;
     border: 1px solid #475569;
-    transition: all 0.3s ease;
     margin: 0 1rem;
 }
 
@@ -307,12 +309,6 @@ h2::after {
     width: 28px;
     height: 28px;
     filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.3));
-}
-
-/* Infinite scroll animation */
-@keyframes carousel {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); } /* Adjust to match half the content width */
 }
 
 /* Responsive adjustments */
