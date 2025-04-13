@@ -335,7 +335,7 @@ h2::after {
 }
 #projects > div {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(2, 1fr); /* Two columns */
     gap: 2rem;
 }
 #projects div div {
@@ -398,6 +398,7 @@ h2::after {
     padding: 2rem;
     border-radius: 12px;
     transition: all 0.3s ease;
+    width: 100%; /* Ensure full width for single column */
 }
 #education div div:hover {
     border-color: var(--primary);
