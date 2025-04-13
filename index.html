@@ -5,289 +5,427 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Drew Berry - AI Portfolio</title>
     <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        :root {
+            --primary: #10b981;
+            --secondary: #3b82f6;
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --text-light: #f1f5f9;
+            --text-muted: #94a3b8;
+        }
+        * {
             margin: 0;
             padding: 0;
-            background-color: #1a202c;
-            color: #e2e8f0;
-            text-align: center;
-        }
-        section {
-            padding: 3rem 1.5rem;
-            width: 100%;
             box-sizing: border-box;
         }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, var(--bg-dark) 0%, #1e293b 100%);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        section {
+            padding: 4rem 2rem;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            position: relative;
+            text-align: center;
+        }
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -0.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
         #intro {
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 2rem;
-            background: linear-gradient(to bottom right, #2d3748, #4a5568);
-            border-bottom: 1px solid #4a5568;
-            padding: 4rem 1.5rem;
+            background: linear-gradient(45deg, #1e293b, #334155);
+            position: relative;
+            overflow: hidden;
+        }
+        #intro::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 20%, rgba(16, 185, 129, 0.2), transparent 70%);
+            z-index: 0;
+        }
+        #intro > div {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            justify-content: center;
         }
         #intro img {
-            width: 140px;
-            height: 140px;
+            width: 180px;
+            height: 180px;
             object-fit: cover;
             border-radius: 50%;
-            border: 4px solid #68d391;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+        }
+        #intro img:hover {
+            transform: scale(1.05);
         }
         #intro h1 {
-            font-size: 2.5rem;
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--text-light);
             margin: 0;
-            color: #e2e8f0;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(to right, var(--text-light), var(--primary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
         #intro h2 {
-            font-size: 1.4rem;
-            color: #a0aec0;
+            font-size: 1.8rem;
+            color: var(--text-muted);
             margin: 0.5rem 0;
-            font-weight: 500;
+            font-weight: 400;
         }
         #intro p {
-            margin: 0.5rem 0 1.5rem;
-            color: #cbd5e0;
-            max-width: 500px;
+            max-width: 600px;
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin: 1rem 0;
+        }
+        #intro .links {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
         }
         #intro a {
-            margin-right: 1.5rem;
             text-decoration: none;
-            transition: transform 0.2s;
+            transition: transform 0.3s ease;
         }
         #intro a:hover {
-            transform: scale(1.1);
+            transform: translateY(-4px);
         }
         #intro img.icon {
-            width: 32px;
-            height: 32px;
-            vertical-align: middle;
+            width: 40px;
+            height: 40px;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
         }
         #intro a.cv-link {
-            color: #68d391;
-            font-size: 1.2rem;
-            text-decoration: underline;
+            color: var(--primary);
+            font-size: 1.3rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 0.5rem 1rem;
+            border: 2px solid var(--primary);
+            border-radius: 6px;
+            transition: all 0.3s ease;
         }
         #intro a.cv-link:hover {
-            color: #48bb78;
+            background: var(--primary);
+            color: var(--bg-dark);
+            transform: translateY(-4px);
         }
         #about {
-            background-color: #2d3748;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-            padding: 2.5rem;
-            margin: 2rem auto;
-            max-width: 1000px;
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            position: relative;
+            overflow: hidden;
         }
-        #about h2 {
-            color: #e2e8f0;
-            margin-top: 0;
-            font-size: 2rem;
+        #about::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.1), transparent 70%);
+            transform: rotate(45deg);
         }
         #about > div {
+            position: relative;
             display: flex;
-            gap: 2rem;
+            gap: 3rem;
             flex-wrap: wrap;
             justify-content: center;
         }
         #about > div > div {
             flex: 1;
-           :min-width: 200px;
+            min-width: 250px;
+        }
+        #about p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
         }
         #about ul {
             list-style: none;
             padding: 0;
-            color: #cbd5e0;
+            color: var(--text-muted);
+            font-size: 1.1rem;
         }
-        #about ul li:before {
-            content: '•';
-            color: #68d391;
-            margin-right: 0.5rem;
+        #about ul li {
+            margin: 0.5rem 0;
         }
         #current {
-            background-color: #4a5568;
-            padding: 2.5rem;
-            border-radius: 12px;
-            margin: 2rem auto;
-            max-width: 1000px;
-        }
-        #current h2 {
-            color: #e2e8f0;
-            font-size: 2rem;
+            background: linear-gradient(to bottom, #334155, var(--bg-card));
+            border-radius: 16px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
         }
         #current > div {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
         }
         #current div div {
-            background: #2d3748;
-            border: 1px solid #718096;
-            padding: 1.5rem;
-            border-radius: 8px;
-            transition: box-shadow 0.2s, transform 0.2s;
+            background: #1e293b;
+            border: 1px solid #475569;
+            padding: 2rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
         #current div div:hover {
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
-            transform: translateY(-4px);
+            transform: translateY(-6px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+            border-color: var(--primary);
+        }
+        #current div div::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--primary);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+        #current div div:hover::before {
+            transform: scaleX(1);
         }
         #current h3 {
-            margin: 0.5rem 0;
-            color: #e2e8f0;
-            font-size: 1.2rem;
+            color: var(--text-light);
+            font-size: 1.4rem;
+            margin: 0 0 1rem;
         }
         #current p {
-            color: #cbd5e0;
-            margin: 0.5rem 0;
+            color: var(--text-muted);
+            font-size: 1rem;
         }
         #current a {
+            color: var(--primary);
             text-decoration: none;
-            color: #68d391;
-            margin-right: 0.75rem;
-            font-size: 0.9rem;
+            font-weight: 600;
+            transition: color 0.3s ease;
         }
         #current a:hover {
-            color: #48bb78;
+            color: #34d399;
         }
         #skills {
-            background-color: #2d3748;
-            padding: 2.5rem;
-            border-radius: 12px;
-            margin: 2rem auto;
-            max-width: 1000px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+            position: relative;
         }
-        #skills h2 {
-            color: #e2e8f0;
-            font-size: 2rem;
+        #skills .carousel {
+            display: flex;
+            animation: carousel 20s linear infinite;
+            width: 400%;
         }
-        #skills > div {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 1.5rem;
+        #skills .carousel div:hover {
+            animation-play-state: paused;
         }
-        #skills div {
+        #skills .carousel > div {
+            width: 25%;
             padding: 1.5rem;
-            background: #4a5568;
-            border-radius: 8px;
-            border: 1px solid #718096;
-            transition: transform 0.2s;
+            background: #1e293b;
+            border-radius: 12px;
+            border: 1px solid #475569;
+            transition: all 0.3s ease;
+            margin: 0 1rem;
         }
-        #skills div:hover {
-            transform: translateY(-4px);
+        #skills .carousel > div:hover {
+            transform: translateY(-6px);
+            border-color: var(--primary);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
         }
-        #skills div h3 {
-            margin: 0 0 0.5rem;
-            color: #68d391;
-            font-size: 1.1rem;
+        #skills .carousel div h3 {
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin: 0 0 1rem;
+            font-weight: 600;
         }
         #skills p {
-            margin: 0.4rem 0;
-            color: #cbd5e0;
+            margin: 0.5rem 0;
+            color: var(--text-muted);
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.75rem;
+            font-size: 1rem;
         }
         #skills img {
-            width: 24px;
-            height: 24px;
-            vertical-align: middle;
+            width: 28px;
+            height: 28px;
+            filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.3));
+        }
+        @keyframes carousel {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-75%); }
         }
         #projects {
-            background-color: #4a5568;
-            padding: 2.5rem;
-            border-radius: 12px;
-            margin: 2rem auto;
-            max-width: 1000px;
-        }
-        #projects h2 {
-            color: #e2e8f0;
-            font-size: 2rem;
+            background: linear-gradient(to bottom, #334155, var(--bg-card));
+            border-radius: 16px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
         }
         #projects > div {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
         }
         #projects div div {
-            background: #2d3748;
-            border: 1px solid #718096;
-            padding: 1.5rem;
-            border-radius: 8px;
-            transition: box-shadow 0.2s, transform 0.2s;
+            background: #1e293b;
+            border: 1px solid #475569;
+            padding: 2rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            position: relative;
         }
         #projects div div:hover {
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
-            transform: translateY(-4px);
+            transform: translateY(-6px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+            border-color: var(--primary);
         }
         #projects img {
             width: 100%;
-            height: 160px;
+            height: 180px;
             object-fit: cover;
             border-radius: 8px;
-            border: 1px solid #718096;
+            border: 1px solid #475569;
+            transition: transform 0.3s ease;
+        }
+        #projects div div:hover img {
+            transform: scale(1.03);
         }
         #projects h3 {
-            margin: 0.5rem 0;
-            color: #e2e8f0;
-            font-size: 1.2rem;
+            color: var(--text-light);
+            font-size: 1.4rem;
+            margin: 1rem 0 0.5rem;
         }
         #projects p {
-            color: #cbd5e0;
-            margin: 0.5rem 0;
+            color: var(--text-muted);
+            font-size: 1rem;
         }
         #projects a {
+            color: var(--primary);
             text-decoration: none;
-            color: #68d391;
-            margin-right: 0.75rem;
-            font-size: 0.9rem;
+            font-weight: 600;
+            margin-right: 1rem;
+            transition: color 0.3s ease;
         }
         #projects a:hover {
-            color: #48bb78;
+            color: #34d399;
         }
         #education {
-            background-color: #2d3748;
-            padding: 2.5rem;
-            border-radius: 12px;
-            margin: 2rem auto;
-            max-width: 1000px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-        }
-        #education h2 {
-            color: #e2e8f0;
-            font-size: 2rem;
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
         }
         #education > div {
             display: flex;
             flex-wrap: wrap;
-            gap: 1.5rem;
+            gap: 2rem;
             justify-content: center;
         }
         #education div div {
             flex: 1;
-            min-width: 280px;
-            background: #4a5568;
-            border: 1px solid #718096;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            min-width: 300px;
+            background: #1e293b;
+            border: 1px solid #475569;
+            padding: 2rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        #education div div:hover {
+            border-color: var(--primary);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
         }
         #education p {
-            margin: 0 0 0.5rem;
-            color: #e2e8f0;
-            font-weight: 500;
+            color: var(--text-light);
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin: 0 0 1rem;
         }
         #education ul {
             list-style: none;
             padding: 0;
-            color: #cbd5e0;
+            color: var(--text-muted);
+        }
+        #education ul li {
+            margin: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
         #education ul li:before {
-            content: '•';
-            color: #68d391;
-            margin-right: 0.5rem;
+            content: '🎓';
+            color: var(--primary);
+        }
+        @media (max-width: 768px) {
+            #intro {
+                flex-direction: column;
+                text-align: center;
+                padding: 3rem 1rem;
+            }
+            #intro img {
+                width: 150px;
+                height: 150px;
+            }
+            #intro h1 {
+                font-size: 2.5rem;
+            }
+            #about > div {
+                flex-direction: column;
+            }
+            #skills .carousel {
+                width: 100%;
+                animation: none;
+                display: grid;
+                grid-template-columns: 1fr;
+            }
+            #skills .carousel > div {
+                margin: 0;
+            }
+            #projects > div,
+            #current > div {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -295,17 +433,19 @@
     <!-- Intro / Hero Section -->
     <section id="intro">
         <div>
-            <img src="placeholder-photo.jpg" alt="Drew Berry">
-        </div>
-        <div>
-            <h1>Drew Berry</h1>
-            <h2>AI/ML Engineer with a passion for intelligent systems</h2>
-            <p>An AI enthusiast specializing in reinforcement learning and creative problem-solving, actively seeking opportunities in the AI industry.</p>
             <div>
-                <a href="https://github.com/drewberry612" title="GitHub"><img src="https://github.com/favicon.ico" alt="GitHub" class="icon"></a>
-                <a href="https://linkedin.com/in/drew-berry" title="LinkedIn"><img src="https://www.linkedin.com/favicon.ico" alt="LinkedIn" class="icon"></a>
-                <a href="mailto:drewberry137@outlook.com" title="Email"><img src="https://www.google.com/favicon.ico" alt="Gmail" class="icon"></a>
-                <a href="cv.pdf" class="cv-link">CV</a>
+                <img src="placeholder-photo.jpg" alt="Drew Berry">
+            </div>
+            <div>
+                <h1>Drew Berry</h1>
+                <h2>AI/ML Engineer with a Passion for Intelligent Systems</h2>
+                <p>Specializing in reinforcement learning and innovative problem-solving, I'm driven to push the boundaries of AI and create impactful solutions.</p>
+                <div class="links">
+                    <a href="https://github.com/drewberry612" title="GitHub"><img src="https://github.com/favicon.ico" alt="GitHub" class="icon"></a>
+                    <a href="https://linkedin.com/in/drew-berry" title="LinkedIn"><img src="https://www.linkedin.com/favicon.ico" alt="LinkedIn" class="icon"></a>
+                    <a href="mailto:drewberry137@outlook.com" title="Email"><img src="https://www.google.com/favicon.ico" alt="Gmail" class="icon"></a>
+                    <a href="cv.pdf" class="cv-link">CV</a>
+                </div>
             </div>
         </div>
     </section>
@@ -315,14 +455,14 @@
         <h2>About Me</h2>
         <div>
             <div>
-                <p>I'm Drew, a passionate AI/ML engineer with first-class academic credentials from the University of Essex. My focus is on building intelligent systems, from game engines to reinforcement learning models, and I thrive on tackling complex challenges with creative solutions.</p>
+                <p>I'm Drew, an AI/ML engineer with top-tier academic credentials from the University of Essex. My expertise lies in crafting intelligent systems—think game engines and reinforcement learning models—that solve real-world problems with creativity and precision.</p>
             </div>
             <div>
                 <ul>
                     <li>Bouldering 2-3 times a week</li>
-                    <li>Expert debugging without tools</li>
-                    <li>GenAI and memory systems enthusiast</li>
-                    <li>Losing track of time while coding</li>
+                    <li>Master of manual debugging</li>
+                    <li>Obsessed with GenAI memory systems</li>
+                    <li>Known to code for hours without a break</li>
                 </ul>
             </div>
         </div>
@@ -334,12 +474,12 @@
         <div>
             <div>
                 <h3>AI-Assisted Music Recommendation</h3>
-                <p>A personal project using GenAI, Streamlit, and Spotify's Web API to explore AI-driven music recommendations.</p>
+                <p>Building a cutting-edge music recommendation system using GenAI, Streamlit, and Spotify's Web API to deliver personalized experiences.</p>
                 <p>Tech: Python, Streamlit, Spotify API</p>
             </div>
             <div>
                 <h3>Kaggle Competitions</h3>
-                <p>Tackling real-world ML challenges on Kaggle, applying advanced techniques to diverse datasets.</p>
+                <p>Competing in Kaggle challenges to hone my ML skills, tackling diverse datasets with advanced techniques.</p>
                 <p>Tech: Python, scikit-learn, TensorFlow, Pandas</p>
                 <a href="https://kaggle.com">Kaggle</a>
             </div>
@@ -349,7 +489,42 @@
     <!-- Skills -->
     <section id="skills">
         <h2>Skills</h2>
-        <div>
+        <div class="carousel">
+            <div>
+                <h3>Languages</h3>
+                <p><img src="https://www.python.org/static/favicon.ico" alt="Python"> Python</p>
+                <p><img src="https://www.java.com/favicon.ico" alt="Java"> Java</p>
+                <p><img src="https://sqlbolt.com/favicon.ico" alt="SQL"> SQL</p>
+            </div>
+            <div>
+                <h3>ML/AI Frameworks</h3>
+                <p><img src="https://www.tensorflow.org/favicon.ico" alt="TensorFlow"> TensorFlow</p>
+                <p><img src="https://keras.io/favicon.ico" alt="Keras"> Keras</p>
+                <p><img src="https://pytorch.org/favicon.ico" alt="PyTorch"> PyTorch</p>
+                <p><img src="https://scikit-learn.org/favicon.ico" alt="scikit-learn"> scikit-learn</p>
+                <p><img src="https://huggingface.co/favicon.ico" alt="Hugging Face"> Hugging Face</p>
+                <p><img src="https://www.langchain.com/favicon.ico" alt="LangChain"> LangChain</p>
+            </div>
+            <div>
+                <h3>Tools & Platforms</h3>
+                <p><img src="https://git-scm.com/favicon.ico" alt="Git"> Git</p>
+                <p><img src="https://github.com/favicon.ico" alt="GitHub"> GitHub</p>
+                <p><img src="https://www.oracle.com/favicon.ico" alt="OCI"> OCI</p>
+                <p><img src="https://jupyter.org/favicon.ico" alt="Jupyter"> Jupyter Notebook</p>
+                <p><img src="https://colab.research.google.com/favicon.ico" alt="Google Colab"> Google Colab</p>
+                <p><img src="https://www.jetbrains.com/favicon.ico" alt="JetBrains"> JetBrains suite</p>
+                <p><img src="https://www.atlassian.com/favicon.ico" alt="Jira"> Jira</p>
+            </div>
+            <div>
+                <h3>Technical Skills</h3>
+                <p>Neural Network Design</p>
+                <p>Reinforcement Learning</p>
+                <p>Genetic Algorithms</p>
+                <p>Predictive Analytics</p>
+                <p>RAG</p>
+                <p>LLMs</p>
+            </div>
+            <!-- Duplicated for seamless looping -->
             <div>
                 <h3>Languages</h3>
                 <p><img src="https://www.python.org/static/favicon.ico" alt="Python"> Python</p>
@@ -394,7 +569,7 @@
             <div>
                 <img src="project1-placeholder.jpg" alt="MSc Thesis">
                 <h3>MSc Thesis: Reinforcement Learning in TORCS</h3>
-                <p>Built AI driving models for TORCS using genetic algorithms and PPO, tuning hyperparameters for complex behaviors.</p>
+                <p>Developed AI driving models for TORCS using genetic algorithms and PPO, optimizing for complex behaviors.</p>
                 <p>Tech: Python, OpenAI Gym, StableBaselines3</p>
                 <a href="https://github.com/drewberry612">GitHub</a>
                 <a href="#">More Details</a>
@@ -402,7 +577,7 @@
             <div>
                 <img src="project2-placeholder.jpg" alt="Street Fighter Clone">
                 <h3>Street Fighter Engine</h3>
-                <p>Developed a Java-based game engine from scratch, later used for RL research by another MSc student.</p>
+                <p>Built a Java-based game engine from scratch, later adopted for RL research by another MSc student.</p>
                 <p>Tech: Java</p>
                 <a href="https://github.com/drewberry612">GitHub</a>
                 <a href="#">More Details</a>
@@ -410,7 +585,7 @@
             <div>
                 <img src="project3-placeholder.jpg" alt="Angry Birds Clone">
                 <h3>Angry Birds Clone</h3>
-                <p>Created a physics-based clone of Angry Birds with custom mechanics and gameplay.</p>
+                <p>Created a physics-based Angry Birds clone with custom mechanics and engaging gameplay.</p>
                 <p>Tech: Python, Pygame</p>
                 <a href="https://github.com/drewberry612">GitHub</a>
                 <a href="#">More Details</a>
@@ -418,7 +593,7 @@
             <div>
                 <img src="project4-placeholder.jpg" alt="Autograd with NumPy">
                 <h3>Autograd with NumPy</h3>
-                <p>Implemented autograd functionality for neural networks using only NumPy.</p>
+                <p>Implemented autograd for neural networks using only NumPy, showcasing low-level ML expertise.</p>
                 <p>Tech: Python, NumPy</p>
                 <a href="https://github.com/drewberry612">GitHub</a>
                 <a href="#">More Details</a>
