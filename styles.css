@@ -253,7 +253,6 @@ h2::after {
     display: flex;
     animation: carousel 20s linear infinite;
     width: calc(100% * 4);
-    animation: carousel 20s linear infinite;
     flex-wrap: nowrap;  /* Prevent items from wrapping to the next line */
 }
 
