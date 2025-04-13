@@ -389,13 +389,10 @@ h2::after {
 }
 #education > div {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: 2rem;
-    justify-content: center;
 }
 #education div div {
-    flex: 1;
-    min-width: 300px;
     background: #1e293b;
     border: 1px solid #475569;
     padding: 2rem;
@@ -412,21 +409,7 @@ h2::after {
     font-size: 1.2rem;
     margin: 0 0 1rem;
 }
-#education ul {
-    list-style: none;
-    padding: 0;
-    color: var(--text-muted);
-}
-#education ul li {
-    margin: 0.5rem 0;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-#education ul li:before {
-    content: '🎓';
-    color: var(--primary);
-}
+
 @media (max-width: 768px) {
     #intro {
         flex-direction: column;
