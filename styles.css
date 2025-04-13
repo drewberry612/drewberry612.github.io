@@ -252,8 +252,7 @@ h2::after {
 #skills .carousel {
     display: flex;
     animation: carousel 20s linear infinite;
-    width: calc(100% * 4);
-    flex-wrap: nowrap;  /* Prevent items from wrapping to the next line */
+    width: max-content; /* Allow the container to grow based on content */
 }
 
 #skills .carousel > div {
@@ -313,7 +312,7 @@ h2::after {
 /* Infinite scroll animation */
 @keyframes carousel {
     0% { transform: translateX(0); }
-    100% { transform: translateX(-75%); }
+    100% { transform: translateX(-50%); } /* Adjust to match half the content width */
 }
 
 /* Responsive adjustments */

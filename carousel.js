@@ -1,25 +1,26 @@
 document.addEventListener("DOMContentLoaded", () => {
     const carousel = document.querySelector("#skills .carousel");
-    if (!carousel) return; // Exit if the carousel element is not found
-  
-    // Pause on mouse hover
+    if (!carousel) return;
+
+    // Duplicate items for seamless looping
+    const items = Array.from(carousel.children);
+    items.forEach(item => {
+        const clone = item.cloneNode(true);
+        carousel.appendChild(clone);
+    });
+
+    // Pause on hover or touch
     carousel.addEventListener("mouseenter", () => {
-      carousel.style.animationPlayState = "paused";
+        carousel.style.animationPlayState = "paused";
     });
-  
-    // Resume on mouse leave
     carousel.addEventListener("mouseleave", () => {
-      carousel.style.animationPlayState = "running";
+        carousel.style.animationPlayState = "running";
     });
-  
-    // Pause on touch
     carousel.addEventListener("touchstart", () => {
-      carousel.style.animationPlayState = "paused";
+        carousel.style.animationPlayState = "paused";
     });
-  
-    // Resume on touch end
     carousel.addEventListener("touchend", () => {
-      carousel.style.animationPlayState = "running";
+        carousel.style.animationPlayState = "running";
     });
-  });
-  
+});
+
