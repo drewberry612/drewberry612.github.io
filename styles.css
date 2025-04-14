@@ -51,13 +51,11 @@ h2::after {
     overflow: hidden;
 }
 #intro > div {
-    position: relative;
-    z-index: 1;
     display: flex;
     align-items: center;
     gap: 3rem;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-wrap: nowrap; /* Prevent wrapping */
+    justify-content: flex-start; /* Align items to the left */
 }
 #intro img {
     width: 180px;
@@ -159,10 +157,27 @@ h2::after {
 #about ul li {
     margin: 0.5rem 0;
 }
-#current > div {
+#about + section {
+    padding-top: 1.5rem; /* Further reduce top padding */
+    padding-bottom: 1.5rem; /* Further reduce bottom padding */
+}
+#current > div,
+#projects > div {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Ensure equal-sized columns */
     gap: 2rem;
+}
+#current div div,
+#projects div div {
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+    justify-content: space-between; /* Push "Click to learn more" to the bottom */
+    height: 100%; /* Ensure full height */
+    min-height: 300px; /* Set a minimum height for equal-sized boxes */
+}
+#current div div p:last-child,
+#projects div div p:last-child {
+    margin-top: auto; /* Push the last paragraph (Click to learn more) to the bottom */
 }
 #current div div {
     padding: 2rem;
@@ -272,6 +287,11 @@ h2::after {
     gap: 2rem;
 }
 #projects div div {
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+    justify-content: space-between; /* Push "Click to learn more" to the bottom */
+    height: 100%; /* Ensure full height */
+    min-height: 300px; /* Set a minimum height for equal-sized boxes */
     padding: 2rem;
     border: 1px solid #475569;
     border-radius: 12px;
@@ -281,6 +301,9 @@ h2::after {
 #projects div div:hover {
     transform: translateY(-6px);
     border-color: var(--primary);
+}
+#projects div div p:last-child {
+    margin-top: auto; /* Push the last paragraph (Click to learn more) to the bottom */
 }
 #projects img {
     width: 100%;
@@ -339,6 +362,10 @@ h2::after {
         text-align: center;
         padding: 3rem 1rem;
     }
+    #intro > div {
+        flex-direction: column; /* Stack image and text vertically */
+        align-items: center;
+    }
     #intro img {
         width: 150px;
         height: 150px;
@@ -366,30 +393,26 @@ footer p {
 }
 .scroll-top-btn {
     position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-    background: var(--primary);
+    bottom: 20px;      /* Keep it 20px from the bottom */
+    right: 20px;       /* Set the right position to 20px */
+    background-color: var(--primary);
     color: var(--bg-dark);
+    padding: 1px 15px;  /* More padding on top and bottom, less on left and right */
     border: none;
     border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
+    font-size: 30px;     /* Increase font size for the arrow */
+    display: none;       /* Hidden by default */
     cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease, opacity 0.3s ease;
-    opacity: 0;
-    visibility: hidden;
     z-index: 1000;
+    text-align: center;
 }
-.scroll-top-btn.show {
-    opacity: 1;
-    visibility: visible;
+
+.scroll-top-btn span {
+    font-size: 40px;     /* Increase size of the arrow inside the button */
+    position: relative;  /* This allows us to adjust its position */
+    top: -3px;           /* Move the arrow upwards */
 }
+
 .scroll-top-btn:hover {
-    transform: scale(1.1);
-    background: #34d399;
+    background-color: #34d399; /* Slightly lighter shade of primary */
 }
