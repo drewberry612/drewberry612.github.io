@@ -201,20 +201,17 @@ h2::after {
     margin: 0 auto;
     overflow: hidden;
     padding: 0 1rem;
+    border: 1px solid #475569;
+    border-radius: 12px;
+    transition: border-color 0.3s ease;
+}
+#skills .carousel-container:hover {
+    border-color: var(--primary);
 }
 #skills .carousel {
     display: flex;
-    animation: carousel 25s linear infinite;
-    animation-play-state: paused;
     width: max-content;
     will-change: transform;
-}
-#skills:hover .carousel {
-    animation-play-state: running;
-}
-@keyframes carousel {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
 }
 #skills .carousel > div {
     flex: 0 0 auto;
@@ -226,7 +223,6 @@ h2::after {
     border-radius: 12px;
 }
 #skills .carousel > div:hover {
-    transform: translateY(-6px);
     animation-play-state: paused;
 }
 #skills .carousel div h3 {
@@ -257,10 +253,10 @@ h2::after {
 @media (max-width: 768px) {
     #skills .carousel-container {
         padding: 0;
+        border: none;
     }
     #skills .carousel {
         width: 100%;
-        animation: none;
         display: grid;
         grid-template-columns: 1fr;
     }
@@ -352,15 +348,6 @@ h2::after {
     }
     #about > div {
         flex-direction: column;
-    }
-    #skills .carousel {
-        width: 100%;
-        animation: none;
-        display: grid;
-        grid-template-columns: 1fr;
-    }
-    #skills .carousel > div {
-        margin: 0;
     }
     #projects > div,
     #current > div {
