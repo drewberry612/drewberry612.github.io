@@ -364,3 +364,32 @@ footer p {
     margin: 0;
     line-height: 1.5;
 }
+.scroll-top-btn {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: var(--primary);
+    color: var(--bg-dark);
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1000;
+}
+.scroll-top-btn.show {
+    opacity: 1;
+    visibility: visible;
+}
+.scroll-top-btn:hover {
+    transform: scale(1.1);
+    background: #34d399;
+}
