@@ -58,8 +58,8 @@ h2::after {
     justify-content: flex-start; /* Align items to the left */
 }
 #intro img {
-    width: 180px;
-    height: 180px;
+    width: 250px; /* Increased from 180px */
+    height: 250px; /* Increased from 180px */
     object-fit: cover;
     border-radius: 50%;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
@@ -69,7 +69,7 @@ h2::after {
     transform: scale(1.05);
 }
 #intro h1 {
-    font-size: 3.5rem;
+    font-size: 5rem; /* Increased from 3.5rem */
     font-weight: 800;
     color: var(--text-light);
     margin: 0;
@@ -77,11 +77,13 @@ h2::after {
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+    text-align: center;
 }
 #intro h2 {
-    font-size: 1.8rem;
+    font-size: 1.3rem; /* Reduced from 1.8rem */
     color: var(--text-muted);
     margin: 0.5rem 0;
+    margin-bottom: 2rem;
     font-weight: 400;
 }
 #intro h2::after {
@@ -97,6 +99,7 @@ h2::after {
     display: flex;
     gap: 1.5rem;
     align-items: center;
+    justify-content: center;
 }
 #intro a {
     text-decoration: none;
@@ -106,8 +109,8 @@ h2::after {
     transform: translateY(-4px);
 }
 #intro img.icon {
-    width: 40px;
-    height: 40px;
+    width: 90px; /* Reduced from 40px */
+    height: 90px; /* Reduced from 40px */
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
 }
 #intro a.cv-link {
@@ -216,8 +219,6 @@ h2::after {
     margin: 0 auto;
     overflow: hidden;
     padding: 0 1rem;
-    border: 1px solid #475569;
-    border-radius: 12px;
     transition: border-color 0.3s ease;
 }
 #skills .carousel-container:hover {
@@ -248,6 +249,7 @@ h2::after {
 }
 #skills p {
     margin: 0.5rem 0;
+    margin-bottom: 2rem;
     color: var(--text-muted);
     display: flex;
     align-items: center;
