@@ -144,7 +144,6 @@ h2::after {
     transition: all 0.3s ease;
 }
 #about > div > div:hover {
-    transform: translateY(-6px);
     border-color: var(--primary);
 }
 #about p {
@@ -255,6 +254,14 @@ h2::after {
     align-items: center;
     gap: 0.75rem;
     font-size: 1rem;
+    border: 1px solid #475569; /* Add border similar to others */
+    border-radius: 12px; /* Add border radius for consistency */
+    padding: 1rem; /* Add padding for better spacing */
+    transition: border-color 0.3s ease; /* Add transition for smooth hover effect */
+}
+
+#skills p:hover {
+    border-color: var(--primary); /* Change border color on hover */
 }
 #skills img {
     width: 28px;
@@ -399,7 +406,7 @@ footer p {
     right: 20px;       /* Set the right position to 20px */
     background-color: var(--primary);
     color: var(--bg-dark);
-    padding: 1px 15px;  /* More padding on top and bottom, less on left and right */
+    padding: 1px 14px;  /* More padding on top and bottom, less on left and right */
     border: none;
     border-radius: 50%;
     font-size: 30px;     /* Increase font size for the arrow */
@@ -417,4 +424,12 @@ footer p {
 
 .scroll-top-btn:hover {
     background-color: #34d399; /* Slightly lighter shade of primary */
+}
+
+.linkedin-icon {
+    background: #FFFFFF;
+    border-radius: 50%;
+    width: 90px;
+    height: 90px;
+    box-sizing: border-box;
 }
