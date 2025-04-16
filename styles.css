@@ -109,8 +109,8 @@ h2::after {
     transform: translateY(-4px);
 }
 #intro img.icon {
-    width: 90px; /* Reduced from 40px */
-    height: 90px; /* Reduced from 40px */
+    width: 70px; /* Reduced from 40px */
+    height: 70px; /* Reduced from 40px */
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
 }
 #intro a.cv-link {
@@ -127,7 +127,7 @@ h2::after {
 #intro a.cv-link:hover {
     background: var(--primary);
     color: var(--bg-dark);
-    transform: translateY(-4px);
+    transform: none; /* Prevent upward movement on hover */
 }
 #about > div {
     display: flex;
@@ -179,7 +179,13 @@ h2::after {
 }
 #current div div p:last-child,
 #projects div div p:last-child {
-    margin-top: auto; /* Push the last paragraph (Click to learn more) to the bottom */
+    margin-top: auto; /* Push the last paragraph to the bottom */
+    text-align: left; /* Align text to the bottom-right corner */
+    padding-top: 1rem; /* Add padding above the last paragraph */
+}
+#current div div p:nth-last-child(2),
+#projects div div p:nth-last-child(2) {
+    padding-top: 1rem; /* Add padding above the "Stack: ..." lines */
 }
 #current div div {
     padding: 2rem;
@@ -356,7 +362,6 @@ h2::after {
     width: 100%;
 }
 #education div div:hover {
-    transform: translateY(-6px);
     border-color: var(--primary);
 }
 #education p {
