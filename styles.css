@@ -380,7 +380,7 @@ section h2 {
 }
 #projects h3 {
     color: var(--text-light);
-    font-size: 1.35rem;
+    font-size: 1.3rem;
     margin: 0.5rem 0;
     padding-top: 0.5rem; /* Add a tiny amount of padding above the title */
 }
