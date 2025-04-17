@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const slideWidth = slides[0].offsetWidth + 32; // 16px margin each side
 
     // Duplicate slides to fill at least 2400px (~9-10 slides)
-    const minWidth = 2400;
+    const minWidth = 2000;
     const slidesNeeded = Math.ceil(minWidth / slideWidth) - slides.length + 1;
     for (let i = 0; i < slidesNeeded; i++) {
         slides.forEach(slide => {
@@ -48,9 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         lastTime = time;
-        if (!window.matchMedia("(max-width: 768px)").matches) {
-            requestAnimationFrame(animate);
-        }
+        requestAnimationFrame(animate);
     }
 
     // Pause on hover
@@ -59,32 +57,37 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     container.addEventListener("mouseleave", () => {
         isPaused = false;
-    });
-
-    // Pause on touch
-    container.addEventListener("touchstart", () => {
-        isPaused = true;
-    });
-    container.addEventListener("touchend", () => {
-        isPaused = false;
-    });
-
-    // Stop animation on mobile
-    function checkMobile() {
-        if (window.matchMedia("(max-width: 768px)").matches) {
-            carousel.style.transform = "translateX(0)";
-            isPaused = true;
-        } else if (!isPaused) {
-            requestAnimationFrame(animate);
+        const hoveredSlide = container.querySelector(".carousel > div:hover");
+        if (hoveredSlide) {
+            hoveredSlide.style.transition = "transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease"; // Add transition for gradual change
+            hoveredSlide.style.transform = "none"; // Remove hover size change
+            hoveredSlide.style.boxShadow = "none"; // Remove hover shadow
+            hoveredSlide.style.border = "1px solid #475569"; // Reset border
         }
-    }
+    });
 
-    // Initial check and resize listener
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
+    // Pause on touch and apply hover effects
+    container.addEventListener("touchstart", (e) => {
+        isPaused = true;
+        const touchedSlide = e.target.closest(".carousel > div");
+        if (touchedSlide) {
+            touchedSlide.style.transition = "transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease"; // Add transition for gradual change
+            touchedSlide.style.transform = "scale(1.05)"; // Apply hover size change
+            touchedSlide.style.boxShadow = "0 8px 16px rgba(0, 0, 0, 0.3)"; // Apply hover shadow
+            touchedSlide.style.border = "2px solid var(--primary)"; // Apply hover border
+        }
+    });
 
-    // Start animation if not mobile
-    if (!window.matchMedia("(max-width: 768px)").matches) {
-        requestAnimationFrame(animate);
-    }
+    container.addEventListener("touchend", (e) => {
+        isPaused = false;
+        const touchedSlide = e.target.closest(".carousel > div");
+        if (touchedSlide) {
+            touchedSlide.style.transform = "none"; // Remove hover size change
+            touchedSlide.style.boxShadow = "none"; // Remove hover shadow
+            touchedSlide.style.border = "1px solid #475569"; // Reset border
+        }
+    });
+
+    // Start animation
+    requestAnimationFrame(animate);
 });

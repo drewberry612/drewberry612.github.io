@@ -266,6 +266,9 @@ section h2 {
     will-change: transform;
 }
 #skills .carousel > div {
+    display: flex;
+    flex-direction: column; /* Stack text elements vertically */
+    gap: 1rem; /* Add vertical spacing between text elements */
     flex: 0 0 auto;
     min-width: 200px;
     max-width: 240px;
@@ -273,12 +276,13 @@ section h2 {
     margin: 0 1rem;
     border: 1px solid #475569;
     border-radius: 12px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
 }
-#skills .carousel > div:hover {
+#skills .carousel > div:hover,
+#skills .carousel > div:active {
     transform: scale(1.05);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
     border: 2px solid var(--primary);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
 }
 /* Make AI/ML Skills and Other Technical Skills slides wider */
 #skills .carousel > .wide-slide {
@@ -290,21 +294,6 @@ section h2 {
     font-size: 1.2rem;
     margin: 0 0 1rem;
     font-weight: 600;
-}
-#skills p {
-    margin: 0.5rem 0 1rem;
-    color: var(--text-muted);
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    font-size: 1.15rem;
-    border: 1px solid #475569;
-    border-radius: 12px;
-    padding: 1rem;
-    transition: border-color 0.3s ease;
-}
-#skills p:hover {
-    border-color: var(--primary);
 }
 #skills img {
     width: 28px;
@@ -322,27 +311,26 @@ section h2 {
     font-size: 1rem;
     color: var(--text-muted);
 }
-@media (max-width: 1024px) {
-    #skills .carousel > div {
-        min-width: 240px;
-        width: 40%;
-    }
+.skills-intro {
+    margin: 0.5rem 0 1rem;
+    color: var(--text-muted);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.15rem;
+    border: 1px solid #475569;
+    border-radius: 12px;
+    padding: 1rem;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
 }
-@media (max-width: 768px) {
-    #skills .carousel-container {
-        padding: 0;
-        border: none;
-    }
-    #skills .carousel {
-        width: 100%;
-        display: grid;
-        grid-template-columns: 1fr;
-    }
-    #skills .carousel > div {
-        min-width: 200px;
-        width: auto;
-        margin: 0 0.5rem;
-    }
+.skills-intro:hover,
+.skills-intro:active {
+    border-color: var(--primary);
+    /*background-color: rgba(16, 185, 129, 0.1); /* Light green background on hover/tap */
+}
+#skills-intro:hover {
+    border-color: var(--primary);
 }
 #projects > div {
     display: grid;
@@ -442,31 +430,6 @@ section h2 {
 #education div div p:last-child {
     margin-bottom: 0; /* Remove padding below the last <p> */
 }
-@media (max-width: 768px) {
-    #intro {
-        flex-direction: column;
-        text-align: center;
-        padding: 3rem 1rem;
-    }
-    #intro > div {
-        flex-direction: column;
-        align-items: center;
-    }
-    #intro img {
-        width: 150px;
-        height: 150px;
-    }
-    #intro h1 {
-        font-size: 2.5rem;
-    }
-    #about > div {
-        flex-direction: column;
-    }
-    #projects > div,
-    #current > div {
-        grid-template-columns: 1fr;
-    }
-}
 footer {
     color: var(--text-muted);
     text-align: center;
@@ -520,5 +483,68 @@ footer p {
     }
     50% {
         transform: translateY(10px);
+    }
+}
+@media (max-width: 1024px) {
+    #skills .carousel > div {
+        min-width: 240px;
+        width: 40%;
+    }
+}
+@media (max-width: 768px) {
+    #intro {
+        flex-direction: column;
+        text-align: center;
+        padding: 3rem 1rem;
+    }
+    #intro > div {
+        flex-direction: column;
+        align-items: center;
+    }
+    #intro img {
+        order: 1; /* Display image first */
+        width: 150px;
+        height: 150px;
+        margin-bottom: 1rem; /* Add spacing below the image */
+    }
+    #intro h1 {
+        order: 2; /* Display headline second */
+        font-size: 2rem; /* Slightly smaller font size */
+        margin-bottom: 1rem; /* Add spacing below the headline */
+    }
+    #intro .links {
+        order: 3; /* Display links last */
+        flex-wrap: wrap; /* Allow links to wrap */
+        gap: 1rem; /* Adjust spacing between links */
+    }
+    #about > div {
+        flex-direction: column;
+    }
+    #projects > div,
+    #current > div {
+        grid-template-columns: 1fr;
+    }
+    #current img,
+    #projects img {
+        max-height: 120px; /* Set a max-height for images on mobile */
+    }
+    .down-arrow {
+        margin-top: 3rem; /* Move the down-arrow further up */
+    }
+    #skills .carousel > div {
+        display: flex;
+        flex-direction: column; /* Stack text elements vertically */
+        gap: 1rem; /* Add vertical spacing between text elements */
+    }
+
+    #skills .carousel > div h3,
+    #skills .carousel > div p {
+        margin: 0; /* Reset any default margins */
+    }
+    #education div div span {
+        margin-bottom: 0; /* Remove the previously added margin-bottom */
+    }
+    #education div div .degree-title {
+        margin-top: 1rem; /* Add margin above the degree title */
     }
 }
