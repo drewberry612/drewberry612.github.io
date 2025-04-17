@@ -534,10 +534,10 @@ footer p {
     }
     #current img,
     #projects img {
-        max-height: 120px; /* Set a max-height for images on mobile */
+        max-height: 100px; /* Set a max-height for images on mobile */
     }
     .down-arrow {
-        margin-top: 4rem; /* Move the down-arrow further up */
+        margin-top: 3rem; /* Move the down-arrow further up */
     }
     #skills .carousel > div {
         display: flex;
