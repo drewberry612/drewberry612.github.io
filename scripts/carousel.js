@@ -4,17 +4,17 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!carousel || !container) return;
 
     const slides = Array.from(carousel.children);
-    let isPaused = false; // Start running by default
+    let isPaused = false;
     let translateX = 0;
     let lastTime = 0;
     const speed = 0.05; // Pixels per millisecond (~27s cycle)
 
-    // Calculate slide width (including margins)
-    const slideWidth = slides[0].offsetWidth + 32; // 16px margin each side
+    // Calculate initial slide width for duplication (using first slide)
+    const initialSlideWidth = slides[0].offsetWidth + 32; // 16px margin each side
 
     // Duplicate slides to fill at least 2400px (~9-10 slides)
     const minWidth = 2000;
-    const slidesNeeded = Math.ceil(minWidth / slideWidth) - slides.length + 1;
+    const slidesNeeded = Math.ceil(minWidth / initialSlideWidth) - slides.length + 1;
     for (let i = 0; i < slidesNeeded; i++) {
         slides.forEach(slide => {
             const clone = slide.cloneNode(true);
@@ -38,9 +38,11 @@ document.addEventListener("DOMContentLoaded", () => {
             const containerRect = container.getBoundingClientRect();
 
             if (slideRect.right <= containerRect.left) {
+                // Calculate the width of the slide being moved
+                const slideWidth = firstSlide.offsetWidth + 32; // Include margins
                 // Move first slide to end
                 carousel.appendChild(firstSlide);
-                // Adjust translateX to compensate
+                // Adjust translateX to compensate for the moved slide
                 translateX += slideWidth;
             }
 
@@ -59,10 +61,10 @@ document.addEventListener("DOMContentLoaded", () => {
         isPaused = false;
         const hoveredSlide = container.querySelector(".carousel > div:hover");
         if (hoveredSlide) {
-            hoveredSlide.style.transition = "transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease"; // Add transition for gradual change
-            hoveredSlide.style.transform = "none"; // Remove hover size change
-            hoveredSlide.style.boxShadow = "none"; // Remove hover shadow
-            hoveredSlide.style.border = "1px solid #475569"; // Reset border
+            hoveredSlide.style.transition = "transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease";
+            hoveredSlide.style.transform = "none";
+            hoveredSlide.style.boxShadow = "none";
+            hoveredSlide.style.border = "1px solid #475569";
         }
     });
 
@@ -71,10 +73,10 @@ document.addEventListener("DOMContentLoaded", () => {
         isPaused = true;
         const touchedSlide = e.target.closest(".carousel > div");
         if (touchedSlide) {
-            touchedSlide.style.transition = "transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease"; // Add transition for gradual change
-            touchedSlide.style.transform = "scale(1.05)"; // Apply hover size change
-            touchedSlide.style.boxShadow = "0 8px 16px rgba(0, 0, 0, 0.3)"; // Apply hover shadow
-            touchedSlide.style.border = "2px solid var(--primary)"; // Apply hover border
+            touchedSlide.style.transition = "transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease";
+            touchedSlide.style.transform = "scale(1.05)";
+            touchedSlide.style.boxShadow = "0 8px 16px rgba(0, 0, 0, 0.3)";
+            touchedSlide.style.border = "2px solid var(--primary)";
         }
     });
 
@@ -82,9 +84,9 @@ document.addEventListener("DOMContentLoaded", () => {
         isPaused = false;
         const touchedSlide = e.target.closest(".carousel > div");
         if (touchedSlide) {
-            touchedSlide.style.transform = "none"; // Remove hover size change
-            touchedSlide.style.boxShadow = "none"; // Remove hover shadow
-            touchedSlide.style.border = "1px solid #475569"; // Reset border
+            touchedSlide.style.transform = "none";
+            touchedSlide.style.boxShadow = "none";
+            touchedSlide.style.border = "1px solid #475569";
         }
     });
 
