@@ -136,7 +136,7 @@ section h2 {
 #about {
     padding-top: 0rem;
 }
-#about > div {
+about > div {
     display: flex;
     gap: 3rem;
     flex-wrap: wrap;
@@ -289,10 +289,14 @@ section h2 {
     min-width: 260px; /* Adjust the width as needed */
     max-width: 300px; /* Optional: Set a maximum width */
 }
+#skills .carousel > .small-slide {
+    min-width: 180px; /* Slightly less wide */
+    max-width: 220px; /* Optional: Set a maximum width */
+}
 #skills .carousel div h3 {
     color: var(--primary);
     font-size: 1.2rem;
-    margin: 0 0 1rem;
+    margin: 0 0 0.5rem; /* Reduced bottom margin */
     font-weight: 600;
 }
 #skills img {
@@ -495,7 +499,8 @@ footer p {
     #intro {
         flex-direction: column;
         text-align: center;
-        padding: 3rem 1rem;
+        padding: 1.5rem 1rem; /* Further reduced padding */
+        margin-top: -4rem; /* Increased negative margin */
     }
     #intro > div {
         flex-direction: column;
@@ -517,6 +522,9 @@ footer p {
         flex-wrap: wrap; /* Allow links to wrap */
         gap: 1rem; /* Adjust spacing between links */
     }
+    #about {
+        margin-top: -6rem; /* Move it further up on mobile */
+    }
     #about > div {
         flex-direction: column;
     }
@@ -529,17 +537,16 @@ footer p {
         max-height: 120px; /* Set a max-height for images on mobile */
     }
     .down-arrow {
-        margin-top: 3rem; /* Move the down-arrow further up */
+        margin-top: 4rem; /* Move the down-arrow further up */
     }
     #skills .carousel > div {
         display: flex;
         flex-direction: column; /* Stack text elements vertically */
         gap: 1rem; /* Add vertical spacing between text elements */
-    }
-
-    #skills .carousel > div h3,
-    #skills .carousel > div p {
-        margin: 0; /* Reset any default margins */
+        user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        -webkit-tap-highlight-color: transparent; /* removes blue highlight on tap */
     }
     #education div div span {
         margin-bottom: 0; /* Remove the previously added margin-bottom */
