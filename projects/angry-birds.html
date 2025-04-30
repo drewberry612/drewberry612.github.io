@@ -3,16 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coming Soon</title>
+    <title>Angry Birds Clone</title>
     <link rel="stylesheet" href="../styles/angry-birds.css">
 </head>
 <body>
     <header>
-        <h1>Page Under Construction</h1>
+        <h1>Angry Birds Clone</h1>
     </header>
     <main>
-        <p>This page is currently being developed. Please check back later for updates!</p>
-        <p>Visit the <a href="https://github.com/drewberry612/angry-birds" target="_blank">GitHub repository</a> for more information.</p>
+        <section>
+            <p>For this project, I created an Angry Birds clone using Java and JBox2D. The game follows the same core mechanics as the popular mobile game, where players use a slingshot and birds to destroy structures housing green pigs that have stolen their eggs.</p>
+        </section>
+        <h2>Gameplay Video</h2>
+        <section>
+            <div class="video-container">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/7BEXA9QL8so" 
+                    title="Gameplay Video" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </section>
+        <h2>Key Features</h2>
+        <section>
+            <ul>
+                <li><strong>3 Levels:</strong> The game includes 3 levels designed by me, showcasing the core gameplay mechanics of Angry Birds. Each level increases in complexity, providing a fun and challenging experience.</li>
+                <li><strong>Custom Physics Engine:</strong> I implemented my own bespoke physics engine using JBox2D. I utilised a ContactListener to create a realistic interaction between the slingshot, birds, and destructible objects. This makes the gameplay feel almost identical to the original game.</li>
+                <li><strong>Bird Types:</strong> There are 4 types of birds, each with their own unique abilities. These birds can be launched using the slingshot to hit targets, and each one impacts the structures differently.</li>
+                <li><strong>Pig Types:</strong> I included 2 types of pigs, with varying resistance to destruction. The pigs act as the primary targets for the player.</li>
+                <li><strong>Destructible Materials:</strong> The game has 3 types of materials for building structures, each with its own unique properties, such as wood, stone, and ice.</li>
+                <li><strong>Explosives & Ropes:</strong> Explosives can be triggered by hitting them at the right speed, while ropes allow for more complex and creative structures to be built by the pigs.</li>
+                <li><strong>Scoring System:</strong> The game encourages efficiency, with a scoring system that rewards players for using fewer birds to destroy all the pigs. A timer tracks the optimal time for each level, promoting competitive play.</li>
+            </ul>
+        </section>
+        <h2>Audio and Visuals</h2>
+        <section>
+            <ul>
+                <li><strong>Sounds:</strong> The game includes sound effects taken from the original Angry Birds game, playing when collisions occur or actions are made by the player.</li>
+                <li><strong>Visuals:</strong> I recreated retro-style visuals, giving the game a similar look and feel to the original while adding my own touch for a unique experience.</li>
+            </ul>
+        </section>
     </main>
     <footer>
         <p>© 2025 Drew Berry. References available upon request.</p>

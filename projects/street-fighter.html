@@ -3,16 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coming Soon</title>
+    <title>Street Fighter Clone</title>
     <link rel="stylesheet" href="../styles/street-fighter.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick.css"/>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick.min.js"></script>
+    <script src="../scripts/video-carousel.js"></script>
 </head>
 <body>
     <header>
-        <h1>Page Under Construction</h1>
+        <h1>Street Fighter Clone</h1>
     </header>
     <main>
-        <p>This page is currently being developed. Please check back later for updates!</p>
-        <p>Visit the <a href="https://github.com/drewberry612/street-fighter" target="_blank">GitHub repository</a> for more information.</p>
+        <section>
+            <p>This is a clone of Street Fighter made from scratch in Java. The game features a variety of attacks, each with unique sound effects, damage, and stunning effects. The goal is to knock out the other player, and there are multiple playable characters to choose from. The game includes retro visuals, a simple AI opponent, and multiple playable characters.</p>
+        </section>
+        <h2>Attack and Hit Animations</h2>
+        <section>
+            <div class="video-carousel">
+                <div data-title="Attack and Hit Animations">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/CAuWCjPuZnc" 
+                        title="Attack and Hit Animations" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <div data-title="AI Demonstration">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/XCWIAsYNQzs" 
+                        title="AI Demonstration" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <div data-title="Options Menu & Debug Mode">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/DLvREgzTpXc" 
+                        title="Options Menu & Debug Mode" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+        </section>
+        <h2>Gameplay</h2>
+        <section>
+            <p>The game includes two primary modes:</p>
+            <ul>
+                <li><strong>Player vs Player (PvP):</strong> Both players control characters using the same keyboard, configured in the options menu.</li>
+                <li><strong>Player vs AI (Story Mode):</strong> In this mode, you battle against a simple AI that uses random number generation to decide which moves to use. The AI is erratic, making it hard to predict and defeat. It only uses moves that are consistent with its current stance (e.g., no jumping attack while crouched).</li>
+            </ul>
+            <p><strong>Best of 3:</strong> The first player to knock out the other twice wins the match.</p>
+        </section>
+        <h2>Attacks</h2>
+        <section>
+            <p>There are 3 types of attacks in the game:</p>
+            <ul>
+                <li>Light</li>
+                <li>Medium</li>
+                <li>Heavy</li>
+            </ul>
+            <p>These attacks can be used while:</p>
+            <ul>
+                <li>Standing</li>
+                <li>Crouched</li>
+                <li>Moving Forward</li>
+                <li>Moving Backward</li>
+                <li>Jumping</li>
+            </ul>
+            <p>Each action results in different effects, ranges, and speeds, making the gameplay dynamic and fun.</p>
+        </section>
+        <h2>Playable Characters</h2>
+        <section>
+            <p>The game features 6 unique characters, each with their own animations, all taken from the real Street Fighter games.</p>
+            <p>A random background is selected for every match, emulating location changes in the original games.</p>
+            <p>🎶 The game includes sounds for hitting the opponent and music from the real games to complete the nostalgic experience.</p>
+        </section>
     </main>
     <footer>
         <p>© 2025 Drew Berry. References available upon request.</p>
