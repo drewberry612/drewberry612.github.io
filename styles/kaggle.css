@@ -13,75 +13,113 @@ body {
     color: var(--text-light);
     line-height: 1.6;
     overflow-x: hidden;
+    margin: 0;
+    padding: 0;
 }
 
-#project2 {
-    background: linear-gradient(to bottom, #334155, var(--bg-card));
-    border-radius: 16px;
-    padding: 3rem;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-    text-align: center; /* Center-align content for better presentation */
+header {
+    text-align: center;
+    padding: 2rem 1rem;
+    background: var(--bg-card);
+    border-bottom: 1px solid #475569;
 }
 
-#project2 h1 {
-    color: var(--text-light);
+header h1 {
     font-size: 2.5rem;
-    margin-bottom: 1rem;
+    font-weight: 700;
+    color: var(--text-light);
+    margin: 0;
     background: linear-gradient(to right, var(--text-light), var(--primary));
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
 }
 
-#project2 p {
+main {
+    padding: 2rem 1rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+main section {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: var(--bg-card);
+    border-radius: 12px;
+    border: 1px solid #475569;
+    transition: all 0.3s ease;
+}
+
+main section:hover {
+    border-color: var(--primary);
+}
+
+main h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-light);
+    margin: 2rem 0;
+    position: relative;
+    text-align: center;
+}
+
+main h2::after {
+    content: '';
+    position: absolute;
+    bottom: -0.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background: var(--primary);
+    border-radius: 2px;
+}
+
+main p, main ul, main table {
     color: var(--text-muted);
     font-size: 1.1rem;
-    margin: 1rem 0;
+    line-height: 1.8;
 }
 
-#project2 a {
-    color: var(--primary);
-    text-decoration: none;
-    font-weight: 600;
-    transition: color 0.3s ease;
-    padding: 0.5rem 1rem;
-    border: 2px solid var(--primary);
-    border-radius: 6px;
-    display: inline-block;
-    margin-top: 1rem;
-}
-
-#project2 a:hover {
-    color: #34d399;
-    background: var(--primary);
-    border-color: var(--primary);
-    transform: translateY(-4px);
-}
-
-#project2 img {
+main table {
     width: 100%;
-    height: auto;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    background: var(--bg-card);
+    border: 1px solid #475569;
     border-radius: 8px;
-    margin-top: 1rem;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
-    transition: transform 0.3s ease;
+    overflow: hidden;
 }
 
-#project2 img:hover {
-    transform: scale(1.05);
+main table th, main table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #475569;
+}
+
+main table th {
+    background: var(--primary);
+    color: var(--bg-dark);
+    font-weight: 700;
+}
+
+main table tr:last-child td {
+    border-bottom: none;
+}
+
+main table tr:hover {
+    background: rgba(16, 185, 129, 0.1);
 }
 
 footer {
-    background: var(--bg-card);
-    color: var(--text-muted);
     text-align: center;
     padding: 1.5rem;
-    font-size: 1rem;
+    background: var(--bg-card);
+    color: var(--text-muted);
     border-top: 1px solid #475569;
-    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.3);
+    font-size: 1rem;
 }
 
 footer p {
     margin: 0;
-    line-height: 1.5;
 }
