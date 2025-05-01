@@ -19,9 +19,7 @@ body {
 
 header {
     text-align: center;
-    padding: 2rem 1rem;
-    background: var(--bg-card);
-    border-bottom: 1px solid #475569;
+    padding: 2rem 1rem 1rem;
 }
 
 header h1 {
@@ -36,18 +34,16 @@ header h1 {
 }
 
 main {
-    padding: 2rem 1rem;
+    padding: 1rem 0rem;
     max-width: 800px;
     margin: 0 auto;
 }
 
 main section {
-    margin-bottom: 2rem;
-    padding: 1.5rem;
-    background: var(--bg-card);
     border-radius: 12px;
     border: 1px solid #475569;
     transition: all 0.3s ease;
+    padding: 0.5rem 1.5rem;
 }
 
 main section:hover {
@@ -93,9 +89,7 @@ main ul li {
 footer {
     text-align: center;
     padding: 1.5rem;
-    background: var(--bg-card);
     color: var(--text-muted);
-    border-top: 1px solid #475569;
     font-size: 1rem;
 }
 
@@ -103,63 +97,31 @@ footer p {
     margin: 0;
 }
 
-.video-carousel {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.video-carousel iframe {
-    display: block;
-    margin: 0 auto;
-    max-width: 100%;
-    border-radius: 8px;
-}
-
-.slick-prev, .slick-next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: var(--primary);
-    color: var(--bg-dark);
-    width: 40px;
-    height: 40px;
-    border: none;
-    border-radius: 50%;
-    font-size: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    z-index: 1000;
+.cv-link {
+    color: var(--primary);
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 0.4rem 0.8rem;
+    border: 2px solid var(--primary);
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
     text-align: center;
-    transition: background-color 0.3s ease;
+    margin: 0 auto;
 }
 
-.slick-prev {
-    left: 10px;
-}
-
-.slick-next {
-    right: 10px;
-}
-
-.slick-prev:hover, .slick-next:hover {
-    background-color: #34d399;
-}
-
-.slick-prev::after, .slick-next::after {
-    font-size: 18px;
+.cv-link:hover {
+    background: var(--primary);
     color: var(--bg-dark);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.slick-prev::after {
-    content: '←';
-}
-
-.slick-next::after {
-    content: '→';
+.cv-link-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem 0 1.5rem;
 }
