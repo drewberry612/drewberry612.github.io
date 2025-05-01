@@ -19,9 +19,7 @@ body {
 
 header {
     text-align: center;
-    padding: 2rem 1rem;
-    background: var(--bg-card);
-    border-bottom: 1px solid #475569;
+    padding: 2rem 1rem 1rem; /* Match street-fighter style */
 }
 
 header h1 {
@@ -36,18 +34,16 @@ header h1 {
 }
 
 main {
-    padding: 2rem 1rem;
+    padding: 1rem 0rem;
     max-width: 800px;
     margin: 0 auto;
 }
 
 main section {
-    margin-bottom: 2rem;
-    padding: 1.5rem;
-    background: var(--bg-card);
     border-radius: 12px;
     border: 1px solid #475569;
     transition: all 0.3s ease;
+    padding: 0.5rem 1.5rem; /* Match street-fighter style */
 }
 
 main section:hover {
@@ -90,22 +86,67 @@ main ul li {
     margin-bottom: 0.5rem;
 }
 
-.video-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 1rem 0;
-}
-
 footer {
     text-align: center;
     padding: 1.5rem;
-    background: var(--bg-card);
     color: var(--text-muted);
-    border-top: 1px solid #475569;
     font-size: 1rem;
 }
 
 footer p {
     margin: 0;
+}
+
+.video-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    max-width: 800px;
+    margin: 2rem 0; /* Match street-fighter style */
+}
+
+.video-container iframe {
+    display: block;
+    margin: 0 auto; /* Center the videos horizontally */
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+.video-title {
+    text-align: center; /* Center the text */
+    color: var(--text-muted); /* Match street-fighter style */
+    font-size: 1.5rem; /* Increase font size */
+    font-weight: bold; /* Make the text bold */
+    margin-bottom: 1rem; /* Add spacing below the title */
+    padding-top: 1rem; /* Add top padding */
+}
+
+.cv-link {
+    color: var(--primary);
+    font-size: 1.1rem; /* Slightly smaller font size */
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 0.4rem 0.8rem; /* Reduced padding */
+    border: 2px solid var(--primary);
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    margin: 0 auto; /* Center horizontally */
+}
+
+.cv-link:hover {
+    background: var(--primary); /* Change background color on hover */
+    color: var(--bg-dark); /* Change text color on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+}
+
+.cv-link-container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    margin: 2rem 0 1.5rem; /* Slightly reduce bottom margin */
 }
