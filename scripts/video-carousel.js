@@ -13,6 +13,6 @@ $(document).ready(function(){
     // Update the title based on the current slide
     $('.video-carousel').on('afterChange', function(event, slick, currentSlide){
         const currentTitle = $('.video-carousel .slick-slide[data-slick-index="' + currentSlide + '"]').data('title');
-        $('#video-title').text(currentTitle);
+        $('#video-title').text(currentTitle); // Update the video title
     });
 });
