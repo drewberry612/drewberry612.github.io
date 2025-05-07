@@ -203,6 +203,7 @@ footer p {
     margin: 2rem auto;
     max-width: 800px;
     border: none;
+    align-items: stretch; /* Ensure children stretch to equal height */
 }
 
 .skills-box-container, .stack-box-container {
@@ -218,6 +219,7 @@ footer p {
     padding: 1rem;
     transition: all 0.3s ease;
     width: 90%;
+    flex-grow: 1; /* Allow boxes to grow equally */
 }
 
 .skills-box:hover, .stack-box:hover {
