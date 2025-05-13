@@ -19,9 +19,7 @@ body {
 
 header {
     text-align: center;
-    padding: 2rem 1rem;
-    background: var(--bg-card);
-    border-bottom: 1px solid #475569;
+    padding: 2rem 1rem 1rem;
 }
 
 header h1 {
@@ -36,18 +34,16 @@ header h1 {
 }
 
 main {
-    padding: 2rem 1rem;
+    padding: 1rem 0rem;
     max-width: 800px;
     margin: 0 auto;
 }
 
 main section {
-    margin-bottom: 2rem;
-    padding: 1.5rem;
-    background: var(--bg-card);
     border-radius: 12px;
     border: 1px solid #475569;
     transition: all 0.3s ease;
+    padding: 0.5rem 1.5rem;
 }
 
 main section:hover {
@@ -73,12 +69,6 @@ main h2::after {
     height: 4px;
     background: var(--primary);
     border-radius: 2px;
-}
-
-main p, main ul, main table {
-    color: var(--text-muted);
-    font-size: 1.1rem;
-    line-height: 1.8;
 }
 
 main table {
@@ -111,12 +101,43 @@ main table tr:hover {
     background: rgba(16, 185, 129, 0.1);
 }
 
+.cv-link-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem; /* Increase spacing between buttons */
+    margin: 2rem 0 1.5rem;
+    max-width: 400px; /* Increase max width to prevent squishing */
+    margin-left: auto; /* Center the container */
+    margin-right: auto;
+}
+
+.cv-link {
+    color: var(--primary);
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 0.4rem 0.8rem;
+    border: 2px solid var(--primary);
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.cv-link:hover {
+    background: var(--primary);
+    color: var(--bg-dark);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
 footer {
     text-align: center;
     padding: 1.5rem;
-    background: var(--bg-card);
     color: var(--text-muted);
-    border-top: 1px solid #475569;
     font-size: 1rem;
 }
 
