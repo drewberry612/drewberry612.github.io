@@ -10,9 +10,12 @@ $(document).ready(function(){
         nextArrow: '<button type="button" class="slick-next"></button>'
     });
 
-    // Update the title based on the current slide
+    // Update the title and description based on the current slide
     $('.video-carousel').on('afterChange', function(event, slick, currentSlide){
-        const currentTitle = $('.video-carousel .slick-slide[data-slick-index="' + currentSlide + '"]').data('title');
+        const currentSlideElement = $('.video-carousel .slick-slide[data-slick-index="' + currentSlide + '"]');
+        const currentTitle = currentSlideElement.data('title');
+        const currentDescription = currentSlideElement.data('description');
         $('#video-title').text(currentTitle); // Update the video title
+        $('#video-description').text(currentDescription); // Update the video description
     });
 });
