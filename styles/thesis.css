@@ -122,6 +122,26 @@ footer p {
     padding-top: 1rem; /* Add top padding */
 }
 
+.video-description {
+    color: var(--text-muted);
+    font-size: 1rem;
+    line-height: 1.8;
+    text-align: center;
+    margin-top: 1rem;
+    padding-bottom: 1rem; /* Add padding below the text */
+}
+
+.cv-link-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem; /* Increase spacing between buttons */
+    margin: 2rem 0 1.5rem;
+    max-width: 500px; /* Increase max width to prevent squishing */
+    margin-left: auto; /* Center the container */
+    margin-right: auto;
+}
+
 .cv-link {
     color: var(--primary);
     font-size: 1.1rem;
@@ -142,13 +162,6 @@ footer p {
     background: var(--primary);
     color: var(--bg-dark);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.cv-link-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 2rem 0 1.5rem;
 }
 
 .slick-prev, .slick-next {
