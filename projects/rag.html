@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drew Berry | LLaMA Model Deployment & RAG on OCI</title>
+    <link rel="stylesheet" href="../styles/autograd.css">
+</head>
+<body>
+    <header>
+        <h1>RAG System for PDF Question Answering</h1>
+        <div class="cv-link-container">
+            <a href="https://github.com/drewberry612/pdf-rag" target="_blank" class="cv-link">View on GitHub</a>
+        </div>
+    </header>
+    <main>
+        <section>
+            <p>This project involved deploying a LLaMA 3.2 1B model on Oracle Cloud Infrastructure (OCI) as part of a collaboration between the University of Essex and Oracle. The initial goal was to provide students with cloud-based API access for experimentation, but the project ultimately focused on building a Retrieval-Augmented Generation (RAG) system that allows users to query PDF documents and receive contextually relevant responses from the model.</p>
+        </section>
+        <h2>Application</h2>
+        <section>
+            <p>
+                The RAG system enables document-based question answering using machine learning. Users can upload a PDF, ask questions about its content, and receive informed, context-aware answers in return.
+            </p>
+        </section>
+        <h2>Key Features</h2>
+        <section>
+            <ul>
+                <li><strong>LangChain Integration:</strong> Managed the orchestration of model responses, vector store queries, and prompt formatting.</li>
+                <li><strong>Custom Embeddings:</strong> Developed a custom HuggingFace-compatible embedding class for LLaMA (due to limited out-of-the-box support for this architecture).</li>
+                <li><strong>NLTK for Text Preprocessing:</strong> Used NLTK to enhance text representation and improve response quality.</li>
+                <li><strong>Document QA:</strong> Refined the system’s ability to process complex, multi-turn queries grounded in PDF content.</li>
+                <li><strong>Model Experimentation:</strong> Later integrated and tested DeepSeek-R1 to compare document QA performance and assess alternative model capabilities.</li>
+            </ul>
+        </section>
+        <h2>Infrastructure</h2>
+        <section>
+            <ul>
+                <li><strong>Model Hosted On:</strong> Oracle Cloud Infrastructure (OCI) Compute Instance</li>
+                <li><strong>API Access:</strong> Secure HTTP endpoints exposed for student use and experimentation</li>
+                <li><strong>Data Pipeline:</strong> Document ingestion → Chunking → Embedding → Retrieval → Prompt → Generation</li>
+            </ul>
+        </section>
+        <h2>Outcome</h2>
+        <section>
+            <p>
+                The project demonstrated practical deployment of generative models in a cloud environment, and highlighted approaches for:
+            </p>
+            <ul>
+                <li>Customising LLM pipelines for academic or enterprise use cases</li>
+                <li>Implementing RAG in low-resource environments (1B model)</li>
+                <li>Exploring the balance between performance and cost when scaling AI solutions</li>
+            </ul>
+        </section>
+        <section class="skills-stack-container">
+            <div class="skills-box-container">
+                <h2>Skills</h2>
+                <div class="skills-box">
+                    <ul>
+                        <li>Retrieval-Augmented Generation (RAG)</li>
+                        <li>LLM Deployment</li>
+                        <li>LangChain</li>
+                        <li>Custom Embeddings</li>
+                        <li>Document QA</li>
+                        <li>Text Preprocessing (NLTK)</li>
+                        <li>API Development</li>
+                        <li>Cloud Infrastructure</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="stack-box-container">
+                <h2>Tech Stack</h2>
+                <div class="stack-box">
+                    <ul>
+                        <li>Python</li>
+                        <li>LangChain</li>
+                        <li>HuggingFace Transformers</li>
+                        <li>NLTK</li>
+                        <li>Oracle Cloud Infrastructure (OCI)</li>
+                        <li>Git</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>© 2025 Drew Berry. References available upon request.</p>
+    </footer>
+</body>
+</html>
