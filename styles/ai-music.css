@@ -178,36 +178,29 @@ footer p {
     margin-bottom: 0.5rem;
 }
 
-.ui-screenshot {
-    border: 1px solid #475569;
-    border-radius: 12px;
-    margin: 2rem auto;
-    max-width: 800px;
-    width: 100%; /* Changed from 90% to 100% to match section width */
-    overflow: hidden;
+
+/* Video container and description styling (from angry-birds.css) */
+.video-container {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    transition: all 0.3s ease; /* Add transition for smooth hover */
+    position: relative;
+    max-width: 800px;
+    margin: 2rem 0;
 }
 
-.ui-screenshot:hover {
-    border-color: var(--primary);
-}
-
-.ui-screenshot img {
+.video-container iframe {
     display: block;
-    width: 100%; /* Ensures image fills the container */
-    border-radius: 0;
-    margin: 0;
+    margin: 0 auto;
+    max-width: 100%;
+    border-radius: 8px;
 }
 
-.ui-screenshot .caption {
+.video-description {
     color: var(--text-muted);
+    font-size: 1rem;
+    line-height: 1.8;
     text-align: center;
-    font-size: 1.05rem;
-    padding: 0.75rem 0 0.75rem 0;
-    width: 100%;
-    background: none;
-    margin: 0;
+    margin-top: 1rem;
+    padding-bottom: 1rem;
 }
