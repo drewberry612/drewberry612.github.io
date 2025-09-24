@@ -104,7 +104,7 @@ main table th, main table td {
 }
 
 main table th {
-    background: var(--primary);
+    background: var(--text-muted); /* Even darker shade for table header */
     color: var(--bg-dark);
     font-weight: 700;
 }
@@ -114,7 +114,12 @@ main table tr:last-child td {
 }
 
 main table tr:hover {
-    background: rgba(16, 185, 129, 0.1);
+    background: rgba(160, 174, 192, 0.15); /* Gentle grey, matches text-muted, not green */
+}
+
+main table td a {
+    color: inherit;
+    text-decoration: underline;
 }
 
 .cv-link-container {
