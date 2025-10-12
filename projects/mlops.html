@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drew Berry | MLOps Pipeline Simulation</title>
+    <link rel="stylesheet" href="../styles/mlops.css">
+</head>
+<body>
+    <header>
+        <h1>MLOps Pipeline Simulation</h1>
+        <div class="cv-link-container">
+            <a href="https://github.com/drewberry612/mlops-pipeline-simulation" target="_blank" class="cv-link">View on GitHub</a>
+        </div>
+    </header>
+    <main>
+        <section>
+            <p><strong>MLOps Pipeline Simulation</strong> is a fully local, cloud-inspired machine learning pipeline designed to demonstrate end-to-end MLOps architecture and orchestration principles — without relying on any paid cloud infrastructure.</p>
+            <p>The goal is not to optimise model accuracy, but to showcase the engineering mindset behind production-ready ML systems: reproducibility, modularity, versioning, monitoring, and deployment.</p>
+            <p>As a fun demonstration, the pipeline performs a simple dinosaur image classification task — but the core structure is designed to be task-agnostic and reusable across different ML domains.</p>
+        </section>
+        <h2>Objectives</h2>
+        <section>
+            <ul>
+                <li>Build a reusable MLOps blueprint that mirrors real cloud pipelines using only local resources.</li>
+                <li>Demonstrate data ingestion, preprocessing, model training, versioning, and serving.</li>
+                <li>Simulate API gateways, orchestration, monitoring, and data storage layers.</li>
+                <li>Provide a realistic cloud-native architecture without cloud costs.</li>
+            </ul>
+        </section>
+        <h2>Cloud-Native Design Analogy</h2>
+        <section>
+            <table style="width:100%;color:var(--text-muted);border-collapse:collapse;">
+                <thead>
+                    <tr style="background:var(--bg-card);">
+                        <th>Local Folder / Component</th>
+                        <th>Cloud Equivalent</th>
+                        <th>Purpose</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>object_storage/</td><td>OCI Object Storage / AWS S3 / GCS</td><td>Stores raw and processed data</td></tr>
+                    <tr><td>data_warehouse/</td><td>Oracle Autonomous DB / Snowflake / BigQuery</td><td>Structured metadata and dataset tables</td></tr>
+                    <tr><td>model_registry/</td><td>MLflow / SageMaker Model Registry / OCI Model Catalog</td><td>Model versioning and lineage tracking</td></tr>
+                    <tr><td>api_gateway/</td><td>Cloud API Gateway + Functions/Lambda</td><td>Serves endpoints for uploads and inference</td></tr>
+                    <tr><td>orchestrator/</td><td>Airflow / Kubeflow / Prefect</td><td>Asynchronous orchestration and monitoring</td></tr>
+                    <tr><td>web_apps/</td><td>Internal web tools (Streamlit dashboards, admin panels)</td><td>Simulated UIs for server and client views</td></tr>
+                </tbody>
+            </table>
+        </section>
+        <h2>System Architecture</h2>
+        <section>
+            <ul>
+                <li><strong>🗄️ Object Storage:</strong> Simulates cloud buckets for storing raw uploads and preprocessed assets. Includes a <code>file_log.csv</code> manifest for tracking ingested files.</li>
+                <li><strong>🏢 Data Warehouse:</strong> <code>SQLite3</code> database for structured metadata. Stores references to files, model versions, and logs. Includes <code>init_db.py</code> and <code>schema.sql</code>.</li>
+                <li><strong>🤖 ML Pipeline:</strong> Handles preprocessing (<code>preprocess.py</code>), training (<code>train.py</code>), hyperparameter config (<code>hyperparams.py</code>), prediction and evaluation (<code>predict.py</code>). Built with <code>TensorFlow</code>/<code>Keras</code> for modelling and <code>scikit-learn</code>/<code>pandas</code> for preprocessing. Modular and task-agnostic.</li>
+                <li><strong>📦 Model Registry:</strong> Stores and manages versioned models, tracks lineage and metrics for reproducibility.</li>
+                <li><strong>🚪 API Gateway:</strong> <code>FastAPI</code> services for server and client endpoints (<code>server_api.py</code>, <code>client_api.py</code>).</li>
+                <li><strong>🎛️ Orchestrator:</strong> Mimics <code>Airflow</code>/<code>Prefect</code> for scheduled retraining (<code>retrain.py</code>) and monitoring (<code>monitor.py</code>).</li>
+                <li><strong>🌐 Web Applications:</strong> <code>Streamlit</code> apps for server and client views (<code>server_app.py</code>, <code>client_app.py</code>).</li>
+            </ul>
+        </section>
+        <h2>Dataset Details</h2>
+        <section>
+            <p><strong>Sources:</strong></p>
+            <ul>
+                <li><code><a href="https://www.kaggle.com/datasets/cmglonly/simple-dinosurus-dataset" target="_blank">Simple Dinosurus Dataset</a></code> by cmglonly</li>
+                <li><code><a href="https://www.kaggle.com/datasets/antaresl/jurassic-park-dinosaurs-dataset" target="_blank">Jurassic Park Dinosaurs Dataset</a></code> by antaresl</li>
+                <li><code><a href="https://www.kaggle.com/datasets/larserikrisholm/dinosaur-image-dataset-15-species/" target="_blank">Dinosaur Image Dataset (15 Species)</a></code> by larserikrisholm</li>
+            </ul>
+            <p>Huge thanks to the original authors for making these datasets publicly available!</p>
+            <p>I gathered these datasets together and meticulously cleaned the data by hand. This involved removing images with watermarks, text overlays, multiple species, any non-dinosaurs, and other problematic examples. Only high-quality, single-species dinosaur images made the cut and placed in <code>object_storage/processed/</code> and <code>object_storage/raw/</code> folders.</p>
+            <p>In the future, I plan to expand the dataset by hand-picking additional images to improve model accuracy and add more dinosaur classes, updating <code>object_storage/</code> and the data warehouse as needed.</p>
+            <p><strong>Fun fact:</strong> The original datasets included a suspicious number of pterosaurs—which, as any dino fan knows, is blasphemy to the name "dinosaur". (No flying reptiles allowed in this club!)</p>
+        </section>
+        <h2>Example Client Workflow</h2>
+        <section>
+            <p>This workflow describes the typical experience for an end user interacting with the system via the client app:</p>
+            <ol>
+                <li><strong>Image Upload:</strong> The user uploads a single image through the client API. The image is stored in <code>object_storage/raw/</code> and logged in the data warehouse.</li>
+                <li><strong>Preprocessing:</strong> The image is immediately preprocessed (cleaned, resized, etc.) and moved to <code>object_storage/processed/</code>.</li>
+                <li><strong>Prediction:</strong> The preprocessed image is passed directly to the trained model for inference. The predicted class (e.g. “Tyrannosaurus Rex”) and confidence scores are returned to the user via the client app.</li>
+            </ol>
+        </section>
+        <h2>Example Server Workflow</h2>
+        <section>
+            <p>This workflow describes the developer or admin experience for managing and retraining the model via the server app:</p>
+            <ol>
+                <li><strong>Bulk Upload:</strong> The developer uploads a <code>.zip</code> file containing multiple images through <code>server_api.py</code>. The images are extracted and stored in <code>object_storage/raw/</code> and registered in the data warehouse.</li>
+                <li><strong>Preprocessing:</strong> The orchestrator (<code>orchestrator/</code>) triggers preprocessing for all new images, moving cleaned data into <code>object_storage/processed/</code>.</li>
+                <li><strong>Model Retraining:</strong> The orchestrator automatically starts a background job to retrain the model using the newly processed images. The updated model is versioned and saved to <code>model_registry/</code>.</li>
+                <li><strong>Monitoring:</strong> The <code>server_app.py</code> provides logs, metrics, and status updates on training jobs and system health.</li>
+            </ol>
+        </section>
+        <h2>Key MLOps Concepts Demonstrated</h2>
+        <section>
+            <ul>
+                <li><strong>Reproducibility:</strong> Consistent results via structured data and model management in <code>data_warehouse/</code> and <code>model_registry/</code>.</li>
+                <li><strong>Automation:</strong> Simulated scheduling and async orchestration of training and monitoring tasks using <code>orchestrator/</code> and <code>monitor.py</code>.</li>
+                <li><strong>Modularity:</strong> Interchangeable components for storage (<code>object_storage/</code>), APIs (<code>server_api.py</code>, <code>client_api.py</code>), and models (<code>model_registry/</code>).</li>
+                <li><strong>Versioning:</strong> Designed for traceable model lifecycle management in <code>model_registry/</code> and the data warehouse.</li>
+                <li><strong>Scalability Simulation:</strong> Mirrors real cloud workflows using lightweight local substitutes such as <code>object_storage/</code>, <code>data_warehouse/</code>, and <code>orchestrator/</code>.</li>
+            </ul>
+        </section>
+        <h2>Learning Outcomes</h2>
+        <section>
+            <ul>
+                <li>Design and implement a complete MLOps architecture from data ingestion to deployment.</li>
+                <li>Apply cloud-native design thinking locally.</li>
+                <li>Build maintainable, modular ML infrastructure aligned with enterprise practices.</li>
+                <li>Communicate complex system design clearly to technical and non-technical audiences.</li>
+            </ul>
+        </section>
+        <section class="skills-stack-container">
+            <div class="skills-box-container">
+                <h2>Skills</h2>
+                <div class="skills-box">
+                    <ul>
+                        <li>MLOps Architecture</li>
+                        <li>Cloud-Native Design</li>
+                        <li>Machine Learning Engineering</li>
+                        <li>API Development</li>
+                        <li>Orchestration & Automation</li>
+                        <li>Data Engineering</li>
+                        <li>System Monitoring</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="stack-box-container">
+                <h2>Tech Stack</h2>
+                <div class="stack-box">
+                    <ul>
+                        <li>Python</li>
+                        <li>FastAPI</li>
+                        <li>Streamlit</li>
+                        <li>TensorFlow</li>
+                        <li>Keras</li>
+                        <li>scikit-learn</li>
+                        <li>Pandas</li>
+                        <li>SQLite3</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>© 2025 Drew Berry. References available upon request.</p>
+    </footer>
+</body>
+</html>
